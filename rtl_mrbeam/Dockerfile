@@ -45,4 +45,6 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
 #
 # Use this variable when creating a container to specify the MQTT broker host.
 
-CMD /usr/local/bin/rtl_mrbeam # | python /path/to/demute/hassio-addons/home-assistant.py
+COPY ./mrbeam_run.sh /
+RUN chmod a+x /mrbeam_run.sh
+CMD /mrbeam_run.sh
