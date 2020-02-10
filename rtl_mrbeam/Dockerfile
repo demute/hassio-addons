@@ -10,9 +10,9 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-MAINTAINER James Fry
+MAINTAINER Manne Tallmarken
 
-LABEL Description="This image is used to start a script that will monitor for RF events on 433Mhz (configurable) and send the data to an MQTT server"
+LABEL Description="This image is used to start a script that will monitor events from Mr Beam lights, using the rtl-sdr code, and send the data to an MQTT server"
 
 #
 # First install software packages needed to compile rtl_433 and to publish MQTT events
