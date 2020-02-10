@@ -1,6 +1,7 @@
-# Docker file to create an image for a hass.io add-on that contains enough software to listen to events via RTL_SDR/RTL_433 and then publish them to a MQTT broker.
+# Docker file to create an image for a hass.io add-on that contains enough software to listen to events via rtl-sdr/rtl_mrbeam and then publish them to a MQTT broker.
 # The script resides in a volume and can be modified to meet your needs.
-# This hass.io addon is based on Chris Kacerguis' project here: https://github.com/chriskacerguis/honeywell2mqtt,
+# This hass.io addon is based on James Frys's project here: https://github.com/james-fry/hassio-addons
+# Which is in turn based on Chris Kacerguis' project here: https://github.com/chriskacerguis/honeywell2mqtt,
 # which is in turn based on Marco Verleun's rtl2mqtt image here: https://github.com/roflmao/rtl2mqtt
 
 # IMPORTANT: The container needs privileged access to /dev/bus/usb on the host.
@@ -28,8 +29,8 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     make install && \
     chmod +s /usr/local/bin/rtl_* && \
     cd /tmp/src/ && \
-    git clone https://github.com/merbanan/rtl_433 && \
-    cd rtl_433/ && \
+    git clone https://github.com/demute/rtl_mrbeam && \
+    cd rtl_mrbeam/ && \
     mkdir build && \
     cd build && \
     cmake ../ && \
@@ -43,9 +44,5 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
 # Define an environment variable
 #
 # Use this variable when creating a container to specify the MQTT broker host.
-ENV MQTT_HOST="hassio.local"
-ENV MQTT_USER="guest"
-ENV MQTT_PASS="guest"
-ENV MQTT_TOPIC="homeassistant/sensor/rtl433"
 
-CMD cd / && cp /config/rtl4332mqtt/rtl2mqtt.sh /rtl2mqtt.sh && chmod +x /rtl2mqtt.sh && /rtl2mqtt.sh
+CMD /usr/local/bin/rtl_mrbeam # | python /path/to/demute/hassio-addons/home-assistant.py

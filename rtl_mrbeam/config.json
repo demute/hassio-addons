@@ -1,14 +1,15 @@
 {
-  "name": "RTL_433 to MQTT Bridge",
-  "version": "0.2",
-  "slug": "rtl4332mqtt",
-  "description": "433MHz RF to MQTT Bridge based on RTL_SDR/RTL_433 for RTL2832U based DVB-T USB tuners",
-  "url": "https://github.com/james-fry/hassio-addons/tree/master/rtl4332mqtt",
+  "name": "RTL_MRBEAM to MQTT Bridge",
+  "version": "0.1",
+  "slug": "rtlmrbeam",
+  "description": "433MHz RF to MQTT Bridge based on RTL_SDR/RTL_MRBEAM for RTL2832U based DVB-T USB tuners",
+  "url": "https://github.com/demute/hassio-addons/rtl_mrbeam",
   "startup": "before",
   "boot": "auto",
   "map": ["config:rw", "ssl"],
   "devices": ["/dev/bus/usb:/dev/bus/usb:rwm"],
   "host_network": "False",
+  "homeassistant_api": "True",
   "arch": [
     "aarch64",
     "amd64",
@@ -17,24 +18,10 @@
   ],
   "options":
   {
-    "mqtt_host": "hassio.local",
-    "mqtt_user": "",
-    "mqtt_password": "",
-    "mqtt_topic": "homeassistant/sensor/currentcost",
-    "protocol": 100,
-    "frequency": 319500000,
-    "gain": 60,
-    "frequency_offset": 350
+    "gain": 13,
   },
   "schema":
   {
-    "mqtt_host": "str",
-    "mqtt_user": "str",
-    "mqtt_password": "str",
-    "mqtt_topic": "str",
-    "protocol": "int",
-    "frequency": "int",
     "gain": "int",
-    "frequency_offset": "int"
    }
 }
