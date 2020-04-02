@@ -3,7 +3,7 @@
   "version": "0.3",
   "slug": "rtlmrbeam",
   "description": "By using a DVB-T USB tuner, this plugin publishes state changes from MrBeam lights to state sensor.mrbeam",
-  "url": "https://github.com/demute/hassio-addons/rtl_mrbeam",
+  "url": "https://github.com/demute/hassio-addons/tree/master/rtl_mrbeam",
   "startup": "before",
   "boot": "auto",
   "map": ["config:rw", "ssl"],
