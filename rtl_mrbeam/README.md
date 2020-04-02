@@ -1,5 +1,5 @@
-# RTL433 to MQTT Bridge hass.io addon
-A hass.io addon for a software defined radio tuned to listen for Mr Beam ligts and publish them as events on sensor.mrbeam.
+# RTL MrBeam hass.io addon
+A hass.io addon for a software defined radio tuned to listen for Mr Beam ligts and publish them as state changes on sensor.mrbeam.
 
 This hass.io addon is based on James Frys's project here: https://github.com/james-fry/hassio-addons
 Which is in turn based on Chris Kacerguis' project here: https://github.com/chriskacerguis/honeywell2mqtt,
