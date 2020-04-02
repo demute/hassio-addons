@@ -1,8 +1,8 @@
 {
-  "name": "RTL_MRBEAM to MQTT Bridge",
-  "version": "0.2",
+  "name": "RTL_MrBeam bridge",
+  "version": "0.3",
   "slug": "rtlmrbeam",
-  "description": "433MHz RF to MQTT Bridge based on RTL_SDR/RTL_MRBEAM for RTL2832U based DVB-T USB tuners",
+  "description": "By using a DVB-T USB tuner, this plugin publishes state changes from MrBeam lights to state sensor.mrbeam",
   "url": "https://github.com/demute/hassio-addons/rtl_mrbeam",
   "startup": "before",
   "boot": "auto",

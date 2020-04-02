@@ -1,5 +1,4 @@
-# Docker file to create an image for a hass.io add-on that contains enough software to listen to events via rtl-sdr/rtl_mrbeam and then publish them to a MQTT broker.
-# The script resides in a volume and can be modified to meet your needs.
+# Docker file to create an image for a hass.io add-on that contains enough software to listen to events via rtl-sdr/rtl_mrbeam and then publish them to state sensor.mrbeam
 # This hass.io addon is based on James Frys's project here: https://github.com/james-fry/hassio-addons
 # Which is in turn based on Chris Kacerguis' project here: https://github.com/chriskacerguis/honeywell2mqtt,
 # which is in turn based on Marco Verleun's rtl2mqtt image here: https://github.com/roflmao/rtl2mqtt
@@ -16,7 +15,7 @@ MAINTAINER Manne Tallmarken
 LABEL Description="This image is used to start a script that will monitor events from Mr Beam lights, using the rtl-sdr code, and send the data to an MQTT server"
 
 #
-# First install software packages needed to compile rtl_433 and to publish MQTT events
+# First install software packages needed to compile rtl_mrbeam
 #
 RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     mkdir /tmp/src && \
@@ -38,12 +37,11 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     make install && \
     apk del build-deps && \
     rm -r /tmp/src && \
-    apk add --no-cache libusb mosquitto-clients jq
+    apk add --no-cache libusb jq
 
 #
 # Define an environment variable
 #
-# Use this variable when creating a container to specify the MQTT broker host.
 
 COPY ./mrbeam_run.sh /
 RUN chmod a+x /mrbeam_run.sh
